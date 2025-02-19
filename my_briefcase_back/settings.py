@@ -47,13 +47,15 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS=[
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    "whitenoise.runserver_nostatic"
 ]
 
 INSTALLED_APPS= DJANGO_APPS + PROJECT_APPS  + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

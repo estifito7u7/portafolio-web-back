@@ -136,7 +136,7 @@ SECURE_HSTS_PRELOAD = True
 # SECURE_SSL_REDIRECT = False  # Redirige HTTP a HTTPS
 
 SESSION_COOKIE_SECURE = True  # Cookies seguras
-CSRF_COOKIE_SECURE = True  # Protege contra ataques CSRF
+# CSRF_COOKIE_SECURE = True  # Protege contra ataques CSRF
 
 
 

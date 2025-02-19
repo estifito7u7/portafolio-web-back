@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ["web-production-cdb9.up.railway.app"]
 
 
-CSRF_TRUSTED_ORIGINS = ["web-production-cdb9.up.railway.app" , "http://*"]
+CSRF_TRUSTED_ORIGINS = ["*"]
 
 # Application definition
 
@@ -135,7 +135,7 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 # SECURE_SSL_REDIRECT = False  # Redirige HTTP a HTTPS
 
-SESSION_COOKIE_SECURE = True  # Cookies seguras
+# SESSION_COOKIE_SECURE = True  # Cookies seguras
 # CSRF_COOKIE_SECURE = True  # Protege contra ataques CSRF
 
 

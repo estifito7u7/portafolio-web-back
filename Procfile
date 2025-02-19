@@ -1,1 +1,1 @@
-web: python manage.py collectstatic && gunicorn my_briefcase_back.wsgi
+web: gunicorn my_briefcase_back.wsgi

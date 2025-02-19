@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ["web-production-cdb9.up.railway.app"]
 
 
-CSRF_TRUSTED_ORIGINS = ["web-production-cdb9.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["web-production-cdb9.up.railway.app" , "http://*"]
 
 # Application definition
 
@@ -48,8 +48,6 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS=[
     'rest_framework',
     'corsheaders',
- 
-   
 ]
 
 INSTALLED_APPS= DJANGO_APPS + PROJECT_APPS  + THIRD_PARTY_APPS

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^s!n03xpy7!0c7uy$p$knzseq2-22d(v++_ov#2vq3p#3y(_qi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1","localhost" , "https://michaelfernadez.netlify.app" , "https://web-production-cdb9.up.railway.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-cdb9.up.railway.app' ,'"https://michaelfernadez.netlify.app"']
@@ -127,6 +127,14 @@ USE_TZ = True
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+
+SECURE_HSTS_SECONDS = 31536000  # 1 año, fuerza HTTPS
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True  # Redirige HTTP a HTTPS
+
+SESSION_COOKIE_SECURE = True  # Cookies seguras
+CSRF_COOKIE_SECURE = True  # Protege contra ataques CSRF
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

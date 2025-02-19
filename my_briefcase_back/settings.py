@@ -22,6 +22,15 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -31,10 +40,10 @@ SECRET_KEY = 'django-insecure-^s!n03xpy7!0c7uy$p$knzseq2-22d(v++_ov#2vq3p#3y(_qi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["web-production-cdb9.up.railway.app"]
+ALLOWED_HOSTS = ["web-production-cdb9.up.railway.app" , "https://michaelfernadez.netlify.app/"]
 
 # Configuración de CSRF
-CSRF_TRUSTED_ORIGINS = ["https://web-production-cdb9.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://web-production-cdb9.up.railway.app" , "https://michaelfernadez.netlify.app/"] 
 
 # Application definition
 PROJECT_APPS = ['apps.projects']
@@ -128,6 +137,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+
 # CORS configuration
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -135,11 +146,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 SECURE_HSTS_SECONDS = 31536000  # 1 año, fuerza HTTPS
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-# SECURE_SSL_REDIRECT = True  # Redirige HTTP a HTTPS
-
-SESSION_COOKIE_SECURE = True  # Cookies seguras
-CSRF_COOKIE_SECURE = True  # Protege contra ataques CSRF
-
+SESSION_COOKIE_SECURE = True 
+CSRF_COOKIE_SECURE = True 
+SECURE_STATIC_FILES = True
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

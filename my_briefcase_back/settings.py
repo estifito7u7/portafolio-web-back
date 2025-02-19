@@ -48,7 +48,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS=[
     'rest_framework',
     'corsheaders',
-    "whitenoise.runserver_nostatic"
+   
 ]
 
 INSTALLED_APPS= DJANGO_APPS + PROJECT_APPS  + THIRD_PARTY_APPS

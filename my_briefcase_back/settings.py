@@ -28,13 +28,11 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["web-production-cdb9.up.railway.app"]
 
-
-CSRF_TRUSTED_ORIGINS = ["*"]
+# Configuración de CSRF
+CSRF_TRUSTED_ORIGINS = ["https://web-production-cdb9.up.railway.app"]
 
 # Application definition
-
-
-PROJECT_APPS=['apps.projects']
+PROJECT_APPS = ['apps.projects']
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -45,12 +43,12 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY_APPS=[
+THIRD_PARTY_APPS = [
     'rest_framework',
     'corsheaders',
 ]
 
-INSTALLED_APPS= DJANGO_APPS + PROJECT_APPS  + THIRD_PARTY_APPS
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -96,7 +94,6 @@ DATABASES = {
 }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -127,34 +124,27 @@ USE_I18N = True
 
 USE_TZ = True
 
+# CORS configuration
 CORS_ALLOW_ALL_ORIGINS = True
 
-
+# Seguridad y cookies
 SECURE_HSTS_SECONDS = 31536000  # 1 año, fuerza HTTPS
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-# SECURE_SSL_REDIRECT = False  # Redirige HTTP a HTTPS
+SECURE_SSL_REDIRECT = True  # Redirige HTTP a HTTPS
 
-# SESSION_COOKIE_SECURE = True  # Cookies seguras
-# CSRF_COOKIE_SECURE = True  # Protege contra ataques CSRF
-
+SESSION_COOKIE_SECURE = True  # Cookies seguras
+CSRF_COOKIE_SECURE = True  # Protege contra ataques CSRF
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-
-
-
-
-
 
 
 # Default primary key field type

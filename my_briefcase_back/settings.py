@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-cdb9.up.railway.app' ,'https://michaelfernadez.netlify.app']
+CSRF_TRUSTED_ORIGINS = ["*"]
 
 # Application definition
 
@@ -138,7 +138,7 @@ USE_TZ = True
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-SECURE_HSTS_SECONDS = 31536000  # 1 año, fuerza HTTPS
+
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_SSL_REDIRECT = False  # Redirige HTTP a HTTPS

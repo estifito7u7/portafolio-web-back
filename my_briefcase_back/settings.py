@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-cdb9.up.railway.app' ,'"https://michaelfernadez.netlify.app"']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-cdb9.up.railway.app' ,'https://michaelfernadez.netlify.app']
 
 # Application definition
 
@@ -145,6 +145,8 @@ SECURE_SSL_REDIRECT = False  # Redirige HTTP a HTTPS
 
 SESSION_COOKIE_SECURE = True  # Cookies seguras
 CSRF_COOKIE_SECURE = True  # Protege contra ataques CSRF
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

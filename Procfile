@@ -1,1 +1,1 @@
-web: gunicorn my_briefcase_back.wsgi
+web: gunicorn my_briefcase_back.wsgi:application

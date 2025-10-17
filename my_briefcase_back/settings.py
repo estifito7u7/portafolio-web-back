@@ -35,12 +35,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "my-briefcase-back.onrender.com",
-    "michaelfernadez.netlify.app"  # sin https
+    "portafolio-web-back.onrender.com", 
+    "michaelfernadez.netlify.app"
 ]
 
-# Orígenes confiables para CSRF
 CSRF_TRUSTED_ORIGINS = [
     "https://my-briefcase-back.onrender.com",
+    "https://portafolio-web-back.onrender.com",  
     "https://michaelfernadez.netlify.app"
 ]
 

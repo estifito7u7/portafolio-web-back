@@ -32,10 +32,10 @@ SECRET_KEY = 'django-insecure-^s!n03xpy7!0c7uy$p$knzseq2-22d(v++_ov#2vq3p#3y(_qi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["web-production-cdb9.up.railway.app" , "https://michaelfernadez.netlify.app/"]
+ALLOWED_HOSTS = ["my-briefcase-back.onrender.com" , "https://michaelfernadez.netlify.app/"]
 
 # Configuración de CSRF
-CSRF_TRUSTED_ORIGINS = ["https://web-production-cdb9.up.railway.app" , "https://michaelfernadez.netlify.app/"] 
+CSRF_TRUSTED_ORIGINS = ["https://my-briefcase-back.onrender.com" , "https://michaelfernadez.netlify.app/"] 
 
 # Application definition
 PROJECT_APPS = ['apps.projects']

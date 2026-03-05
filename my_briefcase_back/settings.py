@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
+from django.core.exceptions import ImproperlyConfigured
 
 
 
@@ -30,7 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^s!n03xpy7!0c7uy$p$knzseq2-22d(v++_ov#2vq3p#3y(_qi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG_ENV = os.getenv("DEBUG")
+DEBUG = True if DEBUG_ENV is None else DEBUG_ENV.strip().lower() not in {"0", "false", "no", "off"}
+IS_PRODUCTION = not DEBUG
 
 
 ALLOWED_HOSTS = [
@@ -102,14 +105,21 @@ WSGI_APPLICATION = 'my_briefcase_back.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if os.getenv("RENDER"):  # solo cuando esté en Render
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:
     DATABASES = {
-        "default": dj_database_url.config(
+        "default": dj_database_url.parse(
+            DATABASE_URL,
             conn_max_age=600,
             ssl_require=True,
         )
     }
 else:
+    if IS_PRODUCTION:
+        raise ImproperlyConfigured(
+            "DATABASE_URL no esta configurado. En produccion debes usar Postgres."
+        )
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
@@ -165,24 +175,27 @@ SECURE_STATIC_FILES = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
 }
 
-if os.getenv("CLOUDINARY_URL"):
+CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
+if CLOUDINARY_URL:
     STORAGES["default"] = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     }
-    MEDIA_URL = "/media/"
-else:
-    STORAGES["default"] = {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    }
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    MEDIA_URL = '/media/'
+elif IS_PRODUCTION:
+    raise ImproperlyConfigured(
+        "CLOUDINARY_URL no esta configurado. En produccion debes usar Cloudinary para persistir imagenes."
+    )
 
 
 # Default primary key field type
